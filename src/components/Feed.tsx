@@ -3,7 +3,7 @@ import Post from "./Post";
 
 function Feed() {
   return (
-    <Box flex={4} p={2}>
+    <Box flex={4} p={2} sx={{ overflowY: "scroll", height: "100vh" }}>
       <Grid container spacing={4}>
         {Array(100)
           .fill(0)

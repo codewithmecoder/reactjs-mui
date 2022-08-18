@@ -12,15 +12,14 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 const StyleToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
+const Search = styled(Box)(({ theme }) => ({
   padding: "2px 10px",
   borderRadius: theme.shape.borderRadius,
   width: "40%",
@@ -65,7 +64,7 @@ function Navbar() {
         >
           <Pets />
         </Button>
-        <Search>
+        <Search bgcolor={"background.default"} color={"text.primary"}>
           <InputBase placeholder="search" startAdornment={<SearchSharp />} />
         </Search>
         <Icon>

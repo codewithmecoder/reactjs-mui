@@ -2,10 +2,16 @@ import {
   Avatar,
   AvatarGroup,
   Box,
+  Divider,
   ImageList,
   ImageListItem,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   Typography,
 } from "@mui/material";
+import { Fragment } from "react";
 import { itemData } from "../data/itemData";
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -17,8 +23,16 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 }
 function Rightbar() {
   return (
-    <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box position="fixed" width={300}>
+    <Box
+      flex={2}
+      p={2}
+      sx={{
+        display: { xs: "none", sm: "block" },
+        overflowY: "scroll",
+        height: "100vh",
+      }}
+    >
+      <Box width={300}>
         <Typography variant="h6" fontWeight={200}>
           Online Friends
         </Typography>
@@ -58,10 +72,10 @@ function Rightbar() {
             src="https://picsum.photos/200/300.webp"
           />
         </AvatarGroup>
-        <Typography variant="h6" fontWeight={200}>
+        <Typography variant="h6" fontWeight={200} mt={2} mb={2}>
           Latest Photos
         </Typography>
-        <ImageList cols={3} rowHeight={100}>
+        <ImageList cols={3} rowHeight={100} gap={5}>
           {itemData.map((item) => (
             <ImageListItem key={item.img}>
               <img
@@ -73,6 +87,92 @@ function Rightbar() {
             </ImageListItem>
           ))}
         </ImageList>
+        <Typography variant="h6" fontWeight={200} mt={2}>
+          Latest Conversations
+        </Typography>
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+            minHeight: "100vh",
+          }}
+        >
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar
+                alt="Remy Sharp"
+                src="https://picsum.photos/200/300.webp"
+              />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Brunch this weekend?"
+              secondary={
+                <Fragment>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Ali Connors
+                  </Typography>
+                  {" — I'll be in your neighborhood doing errands this…"}
+                </Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar
+                alt="Travis Howard"
+                src="https://picsum.photos/200/300.webp"
+              />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Summer BBQ"
+              secondary={
+                <Fragment>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    to Scott, Alex, Jennifer
+                  </Typography>
+                  {" — Wish I could come, but I'm out of town this…"}
+                </Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar
+                alt="Cindy Baker"
+                src="https://picsum.photos/200/300.webp"
+              />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Oui Oui"
+              secondary={
+                <Fragment>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Sandra Adams
+                  </Typography>
+                  {" — Do you have Paris recommendations? Have you ever…"}
+                </Fragment>
+              }
+            />
+          </ListItem>
+        </List>
       </Box>
     </Box>
   );

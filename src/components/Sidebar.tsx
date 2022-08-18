@@ -17,7 +17,7 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
-import { ReactElement } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 
 interface ItemListProps {
   href: string;
@@ -35,8 +35,11 @@ const ItemList = ({ href, icon, text }: ItemListProps) => {
     </ListItem>
   );
 };
-
-function Sidebar() {
+interface PropsTheme {
+  setMode: Dispatch<SetStateAction<string>>;
+  mode: string;
+}
+function Sidebar({ setMode, mode }: PropsTheme) {
   return (
     <Box
       padding="0 20px 0 0"
@@ -63,7 +66,9 @@ function Sidebar() {
               <ListItemIcon>
                 <ModeNight />
               </ListItemIcon>
-              <Switch />
+              <Switch
+                onChange={() => setMode(mode === "dark" ? "light" : "dark")}
+              />
             </ListItemButton>
           </ListItem>
         </List>
